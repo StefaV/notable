@@ -18,3 +18,4 @@ C:\Users\Stefan\Desktop\Projekti\C#\Notes\obj\Debug\net10.0-windows\refint\Notes
 C:\Users\Stefan\Desktop\Projekti\C#\Notes\obj\Debug\net10.0-windows\Notes.pdb
 C:\Users\Stefan\Desktop\Projekti\C#\Notes\obj\Debug\net10.0-windows\Notes.genruntimeconfig.cache
 C:\Users\Stefan\Desktop\Projekti\C#\Notes\obj\Debug\net10.0-windows\ref\Notes.dll
+C:\Users\Stefan\Desktop\Projekti\C#\Notes\obj\Debug\net10.0-windows\Notes.sourcelink.json

@@ -16,18 +16,16 @@
     <Grid Background = "{StaticResource Background}">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width = "*" MinWidth = "150"/>
-            <ColumnDefinition Width = "5*"/>
+            <ColumnDefinition Width = "50" />
+            <ColumnDefinition Width = "*"/>
         </Grid.ColumnDefinitions>
         
 
         <Border BorderThickness = "0" BorderBrush = "{StaticResource Background}">
 
-            <StackPanel Grid.Row = "0 " Grid.Column = "0" Background = "{StaticResource Background}">
-                <Button Height = "50" BorderThickness = "0">1</Button>
-                <Button Height = "50" BorderThickness = "0">2</Button>
-                <Button Height = "50" BorderThickness = "0">3</Button>
-                <Button Height = "50" BorderThickness = "0">4</Button>
+            <StackPanel Grid.Row = "0 " Grid.Column = "0" Background = "{StaticResource Foreground}">
+                <Button Height = "50" BorderThickness = "0" Click = "Save">Save</Button>
+                <Button Height = "50" BorderThickness = "0" Click = "Open">Open</Button>
             </StackPanel>
 
         </Border>
@@ -45,7 +43,5 @@
                 FontFamily = "SansSerif"
                 Background = "{StaticResource Background}"
                 Foreground = "{StaticResource Foreground}"/>
-            
-
     </Grid>
 </Window>
