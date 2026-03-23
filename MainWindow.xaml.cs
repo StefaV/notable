@@ -33,7 +33,7 @@ public partial class MainWindow : Window
         string NotePath = @"Books\NovaBeleska.json";
         var saveInfo = new NoteInfo
         {
-            Name = "Naslov",
+            Name = NoteTitle.Text,
             Content = NoteContent.Text
         };
 
@@ -43,10 +43,11 @@ public partial class MainWindow : Window
     }
     public void Open(object sender, RoutedEventArgs e)
     {   
-        string FileName = "saves.json";
+        string FileName = @"Books\NovaBeleska.json";
         string JsonString = File.ReadAllText(FileName);
         NoteInfo Info = JsonSerializer.Deserialize<NoteInfo>(JsonString)!;
         
+        NoteTitle.Text = Info.Name;
         NoteContent.Text = Info.Content;
     }
     public MainWindow()

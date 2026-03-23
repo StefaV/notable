@@ -19,26 +19,48 @@
             <ColumnDefinition Width = "50" />
             <ColumnDefinition Width = "*"/>
         </Grid.ColumnDefinitions>
-        
 
-        <Border BorderThickness = "0" BorderBrush = "{StaticResource Background}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "50" />
+            <RowDefinition Height = "*"/>
+        </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row = "0 " Grid.Column = "0" Background = "{StaticResource Foreground}">
+        <Border Grid.Row = "0" Grid.Column = "0" Grid.RowSpan = "2" BorderThickness = "0" BorderBrush = "{StaticResource Background}">
+
+            <StackPanel  Background = "{StaticResource Foreground}">
                 <Button Height = "50" BorderThickness = "0" Click = "Save">Save</Button>
                 <Button Height = "50" BorderThickness = "0" Click = "Open">Open</Button>
             </StackPanel>
 
         </Border>
-        
+
+        <TextBox
+            x:Name = "NoteTitle"
+            Grid.Row = "0"
+            Grid.Column = "1"
+            AcceptsReturn = "False"
+            TextWrapping = "Wrap"
+            BorderThickness = "0"
+            VerticalScrollBarVisibility = "Auto"
+            HorizontalScrollBarVisibility = "Auto"
+            Padding = "50,25,0,0"
+            FontSize = "20"
+            FontFamily = "SansSerif"
+            Background = "{StaticResource Background}"
+            Foreground = "{StaticResource Foreground}">
+
+            
+        </TextBox>
+
         <TextBox x:Name = "NoteContent"
-                Grid.Row = "0 "
+                Grid.Row = "1"
                 Grid.Column = "1"
                 AcceptsReturn = "True"
                 TextWrapping = "Wrap"
                 BorderThickness = "0"
                 VerticalScrollBarVisibility = "Auto"
                 HorizontalScrollBarVisibility = "Auto"
-                Padding = "50"
+                Padding = "50,25,50,25"
                 FontSize = "16"
                 FontFamily = "SansSerif"
                 Background = "{StaticResource Background}"
