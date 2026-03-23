@@ -1,1 +1,1 @@
-{"Name":"Naslov 2","Content":"To do:\r\n\r\n - json file mora da se organizuje\r\n - NoteName polje napraviti\r\n - Raditi na frontendu a backend raditi na kraju ili po potrebi\r\n - Save i open postaviti iznad NoteContent zajedno sa note name"}
+{"Name":"Naslov 2","Content":"To do:\r\n\r\n - json file mora da se organizuje:\r\n     -Svaka sveska je jedan recnik koji sadrzi NoteName i NoteContent\r\n - NoteName polje napraviti\r\n - Raditi na frontendu a backend raditi na kraju ili po potrebi\r\n - Save i open postaviti iznad NoteContent zajedno sa note name."}
