@@ -1,5 +1,5 @@
 ﻿Notes
-
+1.0.0.0
 
 winexe
 C#
@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET10_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_O
 C:\Users\Stefan\Desktop\Projekti\C#\Notes\App.xaml
 11407045341
 
-42083878756
+61066775258
 206-81868862
 MainWindow.xaml;
 
-False
+True
 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Notes"
         mc:Ignorable="d"
-        Title="Notable" Height="600" Width="1000"
+        Title="Mini Notes" Height="600" Width="1000"
         WindowStartupLocation = "CenterScreen">
         
         <Window.Resources>
@@ -16,7 +16,7 @@
     <Grid Background = "{StaticResource Background}">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width = "50" />
+            <ColumnDefinition Width = "100" />
             <ColumnDefinition Width = "*"/>
         </Grid.ColumnDefinitions>
 
@@ -27,9 +27,8 @@
 
         <Border Grid.Row = "0" Grid.Column = "0" Grid.RowSpan = "2" BorderThickness = "0" BorderBrush = "{StaticResource Background}">
 
-            <StackPanel  Background = "{StaticResource Foreground}">
+            <StackPanel x:Name = "NoteList" Background = "{StaticResource Foreground}">
                 <Button Height = "50" BorderThickness = "0" Click = "Save">Save</Button>
-                <Button Height = "50" BorderThickness = "0" Click = "Open">Open</Button>
             </StackPanel>
 
         </Border>
