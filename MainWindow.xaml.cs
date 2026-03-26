@@ -15,6 +15,7 @@ using Microsoft.Win32;
 using System.IO;
 using System.Diagnostics.Eventing.Reader;
 using System.Security.Cryptography.X509Certificates;
+using System.Runtime.CompilerServices;
 
 namespace Notes;
 
@@ -29,6 +30,9 @@ public class NoteInfo
 
 public partial class MainWindow : Window
 {
+    IEnumerable<string> files = Directory.EnumerateFiles(@"C:\Users\Stefan\Desktop\Projekti\C#\Notes\Books","*.json");
+
+    string CurrentFile = "Placeholder";
     public void Save(object sender, RoutedEventArgs e)
     {
         var saveInfo = new NoteInfo
@@ -37,18 +41,19 @@ public partial class MainWindow : Window
             Content = NoteContent.Text
         };
 
-        var NotePath = $@"Books\{NoteTitle.Text}.json";
+        var NotePath = $@"C:\Users\Stefan\Desktop\Projekti\C#\Notes\Books\{NoteTitle.Text}.json";
         var Note = JsonSerializer.Serialize(saveInfo);
         File.WriteAllText(NotePath, Note);
 
-        Button NoteButton = new Button();
-        NoteButton.Tag = NotePath;
-        NoteButton.Content = NoteTitle.Text;
-        NoteButton.Height = 50;
-        NoteButton.BorderThickness = new Thickness(0);
-        NoteButton.Click += new RoutedEventHandler(Open);
-        NoteList.Children.Add(NoteButton);
-
+        if(!files.Contains(NotePath)){
+            Button NoteButton = new Button();
+            NoteButton.Tag = NotePath;
+            NoteButton.Content = NoteTitle.Text;
+            NoteButton.Height = 50;
+            NoteButton.BorderThickness = new Thickness(0);
+            NoteButton.Click += new RoutedEventHandler(Open);
+            NoteList.Children.Add(NoteButton);
+        }
     }
     public void Open(object sender, RoutedEventArgs e)
     {   
@@ -60,12 +65,18 @@ public partial class MainWindow : Window
         
         NoteTitle.Text = Info.Name;
         NoteContent.Text = Info.Content;
+        CurrentFile = FileName;
     }
 
+    public void Delete(object sender, RoutedEventArgs e)
+    {
+        if(files.Contains(CurrentFile)){
+            File.Delete(CurrentFile);
+            //NoteList.Children.Remove(ClickedButton);
+        }
+    }
     public void ListNotes()
     {
-        IEnumerable<string> files = Directory.EnumerateFiles(@"C:\Users\Stefan\Desktop\Projekti\C#\Notes\Books","*.json");
-
         foreach (var file in files)
         {
             var JsonString = File.ReadAllText(file);
