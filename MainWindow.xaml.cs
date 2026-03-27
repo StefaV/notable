@@ -32,7 +32,6 @@ public partial class MainWindow : Window
 {
     IEnumerable<string> files = Directory.EnumerateFiles(@"C:\Users\Stefan\Desktop\Projekti\C#\Notes\Books","*.json");
 
-    string CurrentFile = "Placeholder";
     public void Save(object sender, RoutedEventArgs e)
     {
         var saveInfo = new NoteInfo
@@ -43,17 +42,18 @@ public partial class MainWindow : Window
 
         var NotePath = $@"C:\Users\Stefan\Desktop\Projekti\C#\Notes\Books\{NoteTitle.Text}.json";
         var Note = JsonSerializer.Serialize(saveInfo);
+        var NoteFile = $"{NoteTitle.Text}.json";
         File.WriteAllText(NotePath, Note);
-
-        if(!files.Contains(NotePath)){
-            Button NoteButton = new Button();
-            NoteButton.Tag = NotePath;
-            NoteButton.Content = NoteTitle.Text;
-            NoteButton.Height = 50;
-            NoteButton.BorderThickness = new Thickness(0);
-            NoteButton.Click += new RoutedEventHandler(Open);
-            NoteList.Children.Add(NoteButton);
-        }
+        
+        ListNotes();
+    }
+    public void Delete(object sender, RoutedEventArgs e)
+    {
+        var NoteFile = $@"C:\Users\Stefan\Desktop\Projekti\C#\Notes\Books\{NoteTitle.Text}.json";
+        File.Delete(NoteFile);
+        NoteTitle.Text = "";
+        NoteContent.Text = "";
+        ListNotes();
     }
     public void Open(object sender, RoutedEventArgs e)
     {   
@@ -65,18 +65,15 @@ public partial class MainWindow : Window
         
         NoteTitle.Text = Info.Name;
         NoteContent.Text = Info.Content;
-        CurrentFile = FileName;
     }
-
-    public void Delete(object sender, RoutedEventArgs e)
+    public void New(object sender, RoutedEventArgs e)
     {
-        if(files.Contains(CurrentFile)){
-            File.Delete(CurrentFile);
-            //NoteList.Children.Remove(ClickedButton);
-        }
+        NoteTitle.Text = "";
+        NoteContent.Text = "";
     }
     public void ListNotes()
-    {
+    {   
+        NoteList.Children.Clear();
         foreach (var file in files)
         {
             var JsonString = File.ReadAllText(file);
