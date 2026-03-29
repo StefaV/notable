@@ -30,8 +30,9 @@ public class NoteInfo
 
 public partial class MainWindow : Window
 {
-    IEnumerable<string> files = Directory.EnumerateFiles(@"C:\Users\Stefan\Desktop\Projekti\C#\Notes\Books","*.json");
-
+    public static string Username = Environment.UserName;
+    public static string StoragePath = $@"C:\Users\{Username}\AppData\Roaming";
+    IEnumerable<string> files = Directory.EnumerateFiles($@"{StoragePath}","*.json");
     public void Save(object sender, RoutedEventArgs e)
     {
         var saveInfo = new NoteInfo
@@ -40,7 +41,7 @@ public partial class MainWindow : Window
             Content = NoteContent.Text
         };
 
-        var NotePath = $@"C:\Users\Stefan\Desktop\Projekti\C#\Notes\Books\{NoteTitle.Text}.json";
+        var NotePath = $@"C:\Users\{Username}\AppData\Roaming\{NoteTitle.Text}.json";
         var Note = JsonSerializer.Serialize(saveInfo);
         var NoteFile = $"{NoteTitle.Text}.json";
         File.WriteAllText(NotePath, Note);
@@ -49,7 +50,7 @@ public partial class MainWindow : Window
     }
     public void Delete(object sender, RoutedEventArgs e)
     {
-        var NoteFile = $@"C:\Users\Stefan\Desktop\Projekti\C#\Notes\Books\{NoteTitle.Text}.json";
+        var NoteFile = $@"C:\Users\{Username}\AppData\Roaming\{NoteTitle.Text}.json";
         File.Delete(NoteFile);
         NoteTitle.Text = "";
         NoteContent.Text = "";
